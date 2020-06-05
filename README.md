@@ -1,7 +1,15 @@
-# Django + Webpack + React Web Server Experiment
+# Music Pal (A Django + Webpack + React Web Server Experiment)
 
 To-Do List:
 - figure out what kind of site this will be
+    - Music site with artist pages, homepage with billboard top 10, spotify playlists, new music listings, new music videos,
+    up and coming artists
+        - save user preferences on artists
+            - find my new artists page to use ML to connect you with new artists you may like
+        - create your own profile
+        - discover page
+        - news page
+        - upcoming releases page
     - introduce more apps + models + views + templates
 - build out a django RESTful API
 - get a vanillaJS page in using jquery and django templates
