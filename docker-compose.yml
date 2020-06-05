@@ -1,0 +1,25 @@
+version: '0'
+
+services:
+  node:
+    build:
+      context: .
+      dockerfile: docker/node
+    working_dir: /src/webpack
+    ipc: host
+    volumes:
+      - /src/node_modules
+    command: bash -c "(npm install -d)" && (npm run dev)"
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/dockerfile
+    command: bash -c "python manage.py runserver 0.0.0.0:80000"
+    volumes:
+      - .:/src
+      - ~/.ssh:/root/.ssh
+    depends_on:
+      - node
+    ports:
+      - "8000:8000"

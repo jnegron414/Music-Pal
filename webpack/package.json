@@ -1,0 +1,26 @@
+{
+  "name": "Jonathan Negron Django demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode=development --env.development --display-exclude --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "4.1.0",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-react": "6.10.0",
+    "eslint-plugin-import": "2.7.0",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.1.2"
+  },
+  "dependencies": {
+    "react": "16.13.1",
+  }
+}

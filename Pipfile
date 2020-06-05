@@ -1,0 +1,12 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+
+[dev-packages]
+pycodestyle = "==2.5.0"
+
+[packages]
+Django = "==3.0.7"
+
+[requires]
+python_version = "3.8.3"
