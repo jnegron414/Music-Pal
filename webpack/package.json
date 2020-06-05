@@ -1,7 +1,7 @@
 {
   "name": "Jonathan Negron Django demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "test",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode=development --env.development --display-exclude --config webpack.config.js",
@@ -21,6 +21,6 @@
     "webpack-cli": "3.1.2"
   },
   "dependencies": {
-    "react": "16.13.1",
+    "react": "16.13.1"
   }
 }
