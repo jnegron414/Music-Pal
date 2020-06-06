@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    {% for song in hot_100.entries %}
+        <div>
+             <img src="{{ song.image }}"/>
+             <span>
+                {{ song.title }}
+             </span>
+             <span>
+                {{ song.artist }}
+             </span>
+             <span>
+                {{ song.rank }}
+             </span>
+        </div>
+    {% endfor %}
+{% endblock content %}

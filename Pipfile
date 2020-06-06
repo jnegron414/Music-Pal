@@ -6,7 +6,7 @@ url = "https://pypi.org/simple"
 pycodestyle = "==2.5.0"
 
 [packages]
-billboard = "==6.1.0"
+"billboard.py" = "==6.1.0"
 Django = "==3.0.7"
 mysqlclient = "==1.4.6"
 
