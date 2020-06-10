@@ -1,7 +1,7 @@
 # Music Pal (A Django + Webpack + React Web Server Experiment)
 
 To-Do List:
-- figure out what kind of site this will be
+- figure out what kind of site this will be [X]
     - Music site with artist pages, homepage with billboard top 10, spotify playlists, new music listings, new music videos,
     up and coming artists
         - save user preferences on artists
@@ -11,16 +11,21 @@ To-Do List:
         - news page
         - upcoming releases page
     - introduce more apps + models + views + templates
+- Get Webpack fully configured [X]
+    - node container running and watching scss files [X]
+    - compiling js files [X]
 - build out a django RESTful API
 - get a vanillaJS page in using jquery and django templates
 - get a homepage with navigation
+    - Spotify player built using React
 - introduce testing using faker + factory boy
     - full integration + unit test suite
 - introduce cypress testing
     - introduce fixtures for the cypress suite using a management command and the factories to create
 - introduce sass
-    - update package.json to compile
+    - update package.json to compile [X]
     - use BEM format
+- set up redis cache
 - introduce a react single page app on site
     - Look into REDUX
 - look into github actions to have a CI running
@@ -33,3 +38,4 @@ To-Do List:
 - get user auth and saved preferences involved
 - Explore having a seperate API using GraphQL
 - Explore NextJS
+- Implement Sentry

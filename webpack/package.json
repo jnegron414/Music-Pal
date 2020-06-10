@@ -1,20 +1,25 @@
 {
-  "name": "Jonathan Negron Django demo",
+  "name": "musicpal",
   "version": "1.0.1",
   "description": "test",
   "main": "index.js",
   "scripts": {
-    "compile_sass": "node-sass ./scss/ -o ../static/css --output-style compressed",
-    "dev": "webpack --mode=development --env.development --display-exclude --config webpack.config.js",
-    "sass":"npm run compile_sass && npm run watch_sass",
+    "compile_sass": "node-sass ../sass/* -o ../static/css --output-style compressed",
+    "dev": "webpack --mode=development --env.development --display-exclude --config webpack.config.js && npm run sass",
+    "sass": "npm run compile_sass && npm run watch_sass",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch_sass": "node-sass ./scss/ -o ../static/css --output-style compressed -w"
+    "watch_sass": "node-sass ../sass/* -o ../static/css --output-style compressed -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "@cypress/webpack-preprocessor": "5.4.1",
+    "babel-loader": "^8.0.2",
+    "bootstrap": "4.5.0",
     "cypress": "4.7.0",
     "cypress-plugin-tab": "1.0.5",
     "eslint": "7.1.0",
@@ -25,6 +30,7 @@
     "eslint-plugin-import": "2.20.2",
     "jquery": "3.5.1",
     "node-sass": "4.14.1",
+    "sass-lint": "1.13.1",
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11"
   },

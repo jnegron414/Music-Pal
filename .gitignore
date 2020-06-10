@@ -133,3 +133,4 @@ manage.py
 .idea/
 get-pip.py
 node_modules/
+static/*
