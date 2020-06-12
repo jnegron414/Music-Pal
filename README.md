@@ -18,6 +18,7 @@ To-Do List:
 - get a vanillaJS page in using jquery and django templates
 - get a homepage with navigation
     - Spotify player built using React
+    - Possibly an apple music player as well?
 - introduce testing using faker + factory boy
     - full integration + unit test suite
 - introduce cypress testing
@@ -36,6 +37,8 @@ To-Do List:
 - get celery, celerybeat, rabbitMQ, flower involved
     - set up optional docker-compose.yml file for these services
 - get user auth and saved preferences involved
+    - save user spotify account settings to profile so they dont have to login
 - Explore having a seperate API using GraphQL
 - Explore NextJS
 - Implement Sentry
+- Add logging

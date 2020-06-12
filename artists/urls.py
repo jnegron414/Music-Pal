@@ -1,6 +1,6 @@
 from django.urls import path
 
-from homepage import views
+from artists import views
 
 app_name = 'artists'
 urlpatterns = [
