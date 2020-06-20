@@ -9,9 +9,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: PEP8
       uses: ankitvgupta/pycodestyle-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PRECOMMAND_MESSAGE: You have style errors. See them below.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PRECOMMAND_MESSAGE: You have style errors. See them below.
     - name: ESLint
       uses: hallee/eslint-action@1.0.3
       if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
