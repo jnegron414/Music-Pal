@@ -24,12 +24,12 @@ jobs:
       max-parallel: 4
     steps:
       - uses: docker://python:3.8.3
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pipenv
-          pipenv install --dev --system
-          npm ci --cache .npm --prefer-offline
+      - name: Install Pip Dependencies
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: install -d
+      - name: Installing NPM dependencies
+        uses: bahmutov/npm-install@v1=
 
   test:
     needs: build
