@@ -38,7 +38,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Run BE Tests
       uses: VaultVulp/action-pipenv@v2.0.1
         with:
