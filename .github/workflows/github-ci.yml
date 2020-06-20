@@ -23,7 +23,7 @@ jobs:
     strategy:
       max-parallel: 4
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: docker://python:3.8.3
       - name: Install Pip Dependencies
         uses: VaultVulp/action-pipenv@v2.0.1
@@ -40,10 +40,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run BE Tests
-      run: |
-        pipenv run python manage.py test
+      uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: run python manage.py test
     - name: Run FE Cypress Tests
+      uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: run python manage.py runserver 0.0.0.0:8000 &
       run: |
-          nohup pipenv run python manage.py runserver 0.0.0.0:8000 &
           npm run build
           npm run test
