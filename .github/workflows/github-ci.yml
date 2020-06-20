@@ -20,7 +20,7 @@ jobs:
     strategy:
       max-parallel: 4
     steps:
-      - uses: docker://buster:3.8.3
+      - uses: docker://python:3.8.3
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
