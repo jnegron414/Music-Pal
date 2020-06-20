@@ -29,7 +29,7 @@ jobs:
         with:
           command: install -d
       - name: Installing NPM dependencies
-        uses: bahmutov/npm-install@v1=
+        uses: bahmutov/npm-install@v1
 
   test:
     needs: build
