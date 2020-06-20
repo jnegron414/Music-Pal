@@ -1,28 +1,38 @@
-name: Django Backend Test Suite CI
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  build:
+  code-quality:
 
+  build:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
         python-version: [3.8]
+    steps:
+      - name: Set up Python ${{ matrix.python-version }}
+          uses: actions/setup-python@v1
+          with:
+            python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv
+          pipenv install --dev --system
+          npm ci --cache .npm --prefer-offline
 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pipenv
-        pipenv install --dev --system
-        ls
     - name: Run BE Tests
       run: |
-        python manage.py test
+        pipenv run python manage.py test
+    - name: Run FE Cypress Tests
+      run: |
+          nohup pipenv run python manage.py runserver 0.0.0.0:8000 &
+          npm run build
+          npm run test
