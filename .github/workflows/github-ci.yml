@@ -33,18 +33,25 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           working-directory: webpack
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: music-pal
+            path: music-pal
 
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v1
+      with:
+        name: music-pal
     - name: Run BE Tests
       run: |
         pipenv run python manage.py test
     - name: Run FE Cypress Tests
-      uses: VaultVulp/action-pipenv@v2.0.1
-      with:
-        command: |
-          run python manage.py runserver 0.0.0.0:8000 &
+      run: |
+          pipenv run python manage.py runserver 0.0.0.0:8000 &
           npm run build
           npm run test
