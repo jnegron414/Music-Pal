@@ -4,6 +4,16 @@ on: [push, pull_request]
 
 jobs:
   code-quality:
+    runs-on: ubuntu-latest
+    steps:
+    - name: PEP8
+      run: |
+        pip install pycodestyle
+        pycodestyle --exculde nodemodules, musicpal/local_settings.py --show-source
+    - name: ESLint
+      run: |
+        cd webpack && npm install eslint
+        npm run lint_js
 
   build:
     runs-on: ubuntu-latest
