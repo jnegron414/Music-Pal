@@ -40,7 +40,7 @@ jobs:
     steps:
     - name: Run BE Tests
       run: |
-        run python manage.py test
+        pipenv run python manage.py test
     - name: Run FE Cypress Tests
       uses: VaultVulp/action-pipenv@v2.0.1
       with:
