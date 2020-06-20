@@ -30,6 +30,8 @@ jobs:
           command: install -d
       - name: Installing NPM dependencies
         uses: bahmutov/npm-install@v1
+        with:
+          working-directory: webpack
 
   test:
     needs: build
