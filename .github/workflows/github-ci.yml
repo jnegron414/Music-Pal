@@ -18,8 +18,8 @@ jobs:
       with:
         repo-token: ${{secrets.GITHUB_TOKEN}}
         source-root: optional-sub-dir
-  build:
-    runs-on: [self-hosted, linux]
+  test:
+    runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
     steps:
@@ -33,28 +33,31 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           working-directory: webpack
-      - name: print
-        run: |
-          ls ../ -a
 #      - name: Upload artifacts
 #        uses: actions/upload-artifact@v1
 #        with:
 #          name: music-pal
 #          path: ./  # This is not the right answer, uploading all of this takes way too long.
-
-  test:
-    needs: build
-    runs-on: [self-hosted, linux]
-    steps:
+      - name: Run BE Tests
+        run: pipenv run python manage.py test
+      - name: Run FE Cypress Tests
+        run: |
+          pipenv run python manage.py runserver 0.0.0.0:8000 &
+          npm run build
+          npm run test
+#  test:
+#    needs: build
+#    runs-on: [self-hosted, linux]
+#    steps:
 #    - name: Download artifacts
 #      uses: actions/download-artifact@v1
 #      with:
 #        name: music-pal
-    - name: Run BE Tests
-      run: |
-        pipenv run python manage.py test
-    - name: Run FE Cypress Tests
-      run: |
-          pipenv run python manage.py runserver 0.0.0.0:8000 &
-          npm run build
-          npm run test
+#    - name: Run BE Tests
+#      run: |
+#        pipenv run python manage.py test
+#    - name: Run FE Cypress Tests
+#      run: |
+#          pipenv run python manage.py runserver 0.0.0.0:8000 &
+#          npm run build
+#          npm run test
