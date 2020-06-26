@@ -33,6 +33,8 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           working-directory: webpack
+      - name: Create local settings
+        run: cp musicpal/docker_settings.template.py musicpal/local_settings.py
 #      - name: Upload artifacts
 #        uses: actions/upload-artifact@v1
 #        with:
