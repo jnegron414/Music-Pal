@@ -39,7 +39,9 @@ jobs:
 #          name: music-pal
 #          path: ./  # This is not the right answer, uploading all of this takes way too long.
       - name: Run BE Tests
-        run: pipenv run python manage.py test
+        uses: VaultVulp/action-pipenv@v2.0.1
+        with:
+          command: run python manage.py test
       - name: Run FE Cypress Tests
         run: |
           pipenv run python manage.py runserver 0.0.0.0:8000 &
