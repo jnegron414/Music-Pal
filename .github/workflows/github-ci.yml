@@ -33,11 +33,14 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           working-directory: webpack
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: music-pal
-          path: ./
+      - name: print
+        run: |
+          ls -a 
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: music-pal
+#          path: ./  # This is not the right answer, uploading all of this takes way too long.
 
   test:
     needs: build
