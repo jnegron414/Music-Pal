@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build our docker container
-        run: docker-compose up -f docker-compose-github-ci.yml --build
+        run: docker-compose -f docker-compose-github-ci.yml up --build
 #      - name: Install Pip Dependencies
 #        uses: VaultVulp/action-pipenv@v2.0.1
 #        with:
