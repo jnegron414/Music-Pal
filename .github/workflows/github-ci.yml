@@ -44,7 +44,7 @@ jobs:
       - name: Run BE Tests
         uses: VaultVulp/action-pipenv@v2.0.1
         with:
-          command: run python manage.py test
+          command: docker-compose exec web ./manage.py test
       - name: Run FE Cypress Tests
         run: |
           pipenv run python manage.py runserver 0.0.0.0:8000 &
