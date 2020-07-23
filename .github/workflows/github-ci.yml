@@ -24,7 +24,8 @@ jobs:
       max-parallel: 4
     steps:
       - uses: actions/checkout@v2
-      - uses: docker://python:3.8.3
+      - name: Build our docker container
+        run: docker-compose up -d
       - name: Install Pip Dependencies
         uses: VaultVulp/action-pipenv@v2.0.1
         with:
