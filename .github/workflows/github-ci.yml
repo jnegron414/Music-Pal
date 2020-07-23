@@ -43,6 +43,8 @@ jobs:
 #          path: ./  # This is not the right answer, uploading all of this takes way too long.
       - name: Check running containers
         run: docker ps -a
+      - name: TEST
+        run: docker logs web
       - name: Run BE Tests
         run: docker-compose exec -T web ./manage.py test
       - name: Run FE Cypress Tests

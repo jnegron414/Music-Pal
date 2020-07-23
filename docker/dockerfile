@@ -11,4 +11,3 @@ COPY Pipfile.lock /Pipfile.lock
 RUN pipenv install --dev --system
 RUN mkdir -p /src
 WORKDIR /src
-CMD tail -f /dev/null
