@@ -25,15 +25,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build our docker container
-        run: docker-compose up -d
-      - name: Install Pip Dependencies
-        uses: VaultVulp/action-pipenv@v2.0.1
-        with:
-          command: install -d
-      - name: Installing NPM dependencies
-        uses: bahmutov/npm-install@v1
-        with:
-          working-directory: webpack
+        run: docker-compose up --build
+#      - name: Install Pip Dependencies
+#        uses: VaultVulp/action-pipenv@v2.0.1
+#        with:
+#          command: install -d
+#      - name: Installing NPM dependencies
+#        uses: bahmutov/npm-install@v1
+#        with:
+#          working-directory: webpack
       - name: Create local settings
         run: cp musicpal/docker_settings.template.py musicpal/local_settings.py
 #      - name: Upload artifacts
