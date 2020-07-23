@@ -1,0 +1,67 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: PEP8
+      uses: ankitvgupta/pycodestyle-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PRECOMMAND_MESSAGE: You have style errors. See them below.
+    - name: ESLint
+      uses: hallee/eslint-action@1.0.3
+      if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
+      with:
+        repo-token: ${{secrets.GITHUB_TOKEN}}
+        source-root: optional-sub-dir
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build our docker container
+        run: docker-compose -f docker-compose-github-ci.yml up --build -d
+#      - name: Install Pip Dependencies
+#        uses: VaultVulp/action-pipenv@v2.0.1
+#        with:
+#          command: install -d
+#      - name: Installing NPM dependencies
+#        uses: bahmutov/npm-install@v1
+#        with:
+#          working-directory: webpack
+      - name: Create local settings
+        run: cp musicpal/docker_settings.template.py musicpal/local_settings.py
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: music-pal
+#          path: ./  # This is not the right answer, uploading all of this takes way too long.
+      - name: Check running containers
+        run: docker ps -a
+      - name: TEST
+        run: docker logs web
+      - name: Run BE Tests
+        run: docker-compose exec -T web ./manage.py test
+      - name: Run FE Cypress Tests
+        run: docker-compose exec -T node npm run test
+#  test:
+#    needs: build
+#    runs-on: [self-hosted, linux]
+#    steps:
+#    - name: Download artifacts
+#      uses: actions/download-artifact@v1
+#      with:
+#        name: music-pal
+#    - name: Run BE Tests
+#      run: |
+#        pipenv run python manage.py test
+#    - name: Run FE Cypress Tests
+#      run: |
+#          pipenv run python manage.py runserver 0.0.0.0:8000 &
+#          npm run build
+#          npm run test

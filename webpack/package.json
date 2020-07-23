@@ -6,6 +6,7 @@
   "scripts": {
     "compile_sass": "node-sass ../sass/* -o ../static/css --output-style compressed",
     "dev": "webpack --mode=development --env.development --display-exclude --config webpack.config.js && npm run sass",
+    "lint_js": "eslint --config ./.eslintrc.js --ignore-path ./.eslintignore . --ext.js --exxt .jsx --quiet",
     "sass": "npm run compile_sass && npm run watch_sass",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch_sass": "node-sass ../sass/* -o ../static/css --output-style compressed -w"
