@@ -42,11 +42,11 @@ jobs:
 #          name: music-pal
 #          path: ./  # This is not the right answer, uploading all of this takes way too long.
       - name: Run BE Tests
-        run: docker-compose exec web ./manage.py test
+        run: docker-compose -f docker-compose-github-ci.yml exec -T web ./manage.py test
       - name: Run FE Cypress Tests
         run: |
-          docker-compose exec node npm run build
-          docker-compose exec node npm run test
+          docker-compose -f docker-compose-github-ci.yml exec -T node npm run build
+          docker-compose -f docker-compose-github-ci.yml exec -T node npm run test
 #  test:
 #    needs: build
 #    runs-on: [self-hosted, linux]
